@@ -1,0 +1,176 @@
+package pbo13;                                                                        
+
+import java.util.*;
+
+public class PBO13 {                                                                 
+
+    static Scanner in = new Scanner(System.in);
+    static String wujud, warna, nama, merk, fungsi, dimensi, jenisAK, manfaat;          
+    static double harga;
+    static int jumlah;
+    static int jenis[] = new int[10];
+    static alatMandi am = new alatMandi();
+    static alatTulis at = new alatTulis();
+    static alatKesehatan ak = new alatKesehatan();
+
+    public static void main(String[] args) {
+        System.out.print("Masukan jumlah alat: ");
+        jumlah = in.nextInt();
+        System.out.println("1. alat Mandi\n2. alat Tulis\n3. alat Kesehatan");
+        for (int i = 1; i <= jumlah; i++) {
+            System.out.print("\nJenis alat ke-" + i + " = ");
+            jenis[i] = in.nextInt();
+            switch (jenis[i]) {
+                case 1:
+                    System.out.print("Nama\t: ");
+                    nama = in.next();
+                    am.nama(nama);
+                    
+                    System.out.print("Merk\t: ");
+                    merk = in.next();
+                    am.merk(merk);
+                    
+                    System.out.print("Harga\t: Rp. ");
+                    harga = in.nextDouble();
+                    am.harga(harga);
+                    
+                    System.out.print("Wujud\t: ");
+                    wujud = in.next();
+                    am.wujud(wujud);
+                    
+                    System.out.print("Warna\t: ");
+                    warna = in.next();
+                    am.warna(warna);
+                    
+                    System.out.println("\nNama\t= " + am.nama);
+                    System.out.println("Merl\t= " + am.merk);
+                    System.out.println("Harga\t= Rp. " + am.harga);
+                    System.out.println("Wujud\t= "+ am.wujud);
+                    System.out.println("Warna\t= " + am.warna);
+                    break;
+                    
+                case 2:
+                    System.out.print("Nama\t: ");
+                    nama = in.next();
+                    at.nama(nama);
+                    
+                    System.out.print("merk\t: ");
+                    merk = in.next();
+                    at.merk(merk);
+                    
+                    System.out.print("Harga\t: Rp. ");
+                    harga = in.nextDouble();
+                    at.harga(harga);
+                    
+                    System.out.print("Fungsi\t: ");
+                    fungsi = in.next();
+                    at.fungsi(fungsi);
+                    
+                    System.out.print("Dimensi\t: ");
+                    dimensi = in.next();
+                    at.dimensi(dimensi);
+                    
+                    System.out.println("\nNama\t= " + at.nama);
+                    System.out.println("Merl\t= " + at.merk);
+                    System.out.println("Harga\t= Rp. " + at.harga);
+                    System.out.println("Fungsi\t= "+ at.fungsi);
+                    System.out.println("Dimensi\t= " + at.dimensi);
+                    break;
+                    
+                case 3:
+                    System.out.print("Nama\t: ");
+                    nama = in.next();
+                    ak.nama(nama);
+                    
+                    System.out.print("merk\t: ");
+                    merk = in.next();
+                    ak.merk(merk);
+                    
+                    System.out.print("Harga\t: Rp. ");
+                    harga = in.nextDouble();
+                    ak.harga(harga);
+                    
+                    System.out.print("Jenis\t: ");
+                    jenisAK = in.next();
+                    ak.jenisAK(jenisAK);
+                    
+                    System.out.print("Manfaat\t: ");
+                    manfaat = in.next();
+                    ak.manfaat(manfaat);
+                    
+                    System.out.println("\nNama\t= " + ak.nama);
+                    System.out.println("Merl\t= " + ak.merk);
+                    System.out.println("Harga\t= Rp. " + ak.harga);
+                    System.out.println("Jenis\t= "+ ak.jenisAK);
+                    System.out.println("Manfaat\t= " + ak.manfaat);
+                    break;
+                default:
+                    break;
+            }               
+        }
+    }
+}
+
+//===========Class alat (Super Class)=======
+package pbo13;
+
+public class alat {
+    double harga;
+    String merk,nama;
+        
+    void nama(String nama){
+        this.nama = nama;
+    }
+    void merk(String merk){
+        this.merk = merk;
+    }
+    void harga(double harga){
+        this.harga = harga;
+    }   
+}
+
+
+//===========Class Alat Mandi (Sub Class)==========
+package pbo13;
+
+public class alatMandi extends alat{
+    
+    String warna,wujud;
+    
+    public void wujud(String wujud){
+        this.wujud = wujud;
+    }
+    public void warna(String warna){
+        this.warna = warna;
+    }
+}
+
+
+//============Class Alat Tulis (Sub Class)==========
+package pbo13;
+
+public class alatTulis extends alat {
+    
+    String fungsi, dimensi;
+    public void fungsi(String fungsi){
+        this.fungsi = fungsi;
+    }
+    public void dimensi(String dimensi){
+        this.dimensi = dimensi;
+    }
+}
+
+
+//============Class Alat Kesehatan (Sub Class)========
+package pbo13;
+
+public class alatKesehatan extends alat{
+    
+    String jenisAK, manfaat;
+    public void jenisAK(String jenisAK){
+        this.jenisAK = jenisAK;
+    }
+    public void manfaat(String manfaat){
+        this.manfaat = manfaat;
+    }
+}
